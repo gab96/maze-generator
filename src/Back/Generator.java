@@ -8,17 +8,14 @@ public class Generator {
 	
 	public static void main(String[] args) {
 		Generator g = new Generator();
-		//Maze m = g.createMaze(3, 3);
+		/*Maze m = g.createMaze(3, 3);
+		ArrayList<Operation> log = m.getLog();*/
 		for(int i=1; i<100; i++) {
-			System.out.println("dimension: "+i+"x"+i+", time: "+g.createMazeTest(i, i));
+			long time = System.currentTimeMillis();
+			g.createMaze(i, i);
+			long time2 = System.currentTimeMillis()-time;
+			System.out.println("dimension: "+i+"x"+i+", time: "+time2);
 		}
-	}
-	
-	public long createMazeTest(int r, int c) {
-		long time = System.currentTimeMillis();
-		ArrayList<Edge> edges = randEdges(r, c);
-		prim(edges, r, c);
-		return System.currentTimeMillis()-time;
 	}
 	
 	public Maze createMaze(int r, int c) {
